@@ -1,0 +1,125 @@
+<body>
+  <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+  {{!-- <div id="preloader" class="preloader">
+    <div class="inner">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </div> --}}
+  <section class="fxt-template-animation fxt-template-layout26">
+    <!-- Animation Start Here -->
+    {{!-- <div class="starfield"></div> --}}
+    <!-- Animation End Here -->
+    <div class="fxt-content">
+      {{!-- <div class="fxt-header">
+        <a href="/admin" class="fxt-logo"><img
+            src="\images\img\adminlogin.png"
+            alt="Logo"
+            style="width: 10rem;height:10rem"
+          /></a>
+      </div> --}}
+      <div class="fxt-form">
+        {{#if message}}
+          <h3 style="color:crimson;">{{message}}</h3>
+        {{/if}}
+        <div class="fxt-transformY-50 fxt-transition-delay-1">
+          <p>Edit User</p>
+        </div>
+        <form method="POST" action="/admin/edit-user" id="edit-user">
+          <div class="form-group">
+            <div class="fxt-transformY-50 fxt-transition-delay-2">
+                <label for="">Name</label>
+              <input
+                type="name"
+                id="name"
+                class="form-control"
+                name="name"
+                value="{{userData.name}}"
+                oninput="validateName"
+              />
+              <div id="nameError" class="errorMsg"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="fxt-transformY-50 fxt-transition-delay-2">
+                <label for="">Email</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                name="email"
+                value="{{userData.email}}"
+                oninput="validateEmail"
+              />
+              <div id="emailError" class="errorMsg"></div>
+            </div>
+          </div>
+          <input type="hidden" name="id" id="" value="{{userData._id}}">
+          <div class="form-group">
+            <div class="fxt-transformY-50 fxt-transition-delay-5">
+              <button type="submit" class="fxt-btn-fill">Update User</button>
+        <a href="/admin/home" class="btn btn-outline-warning p-2" style="float: right;">Go To Home Page</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+ <script>
+document.getElementById("email").addEventListener('input', validateEmail);
+document.getElementById("name").addEventListener('input', validateName);
+function validateEmail() {
+  const emailError = document.getElementById("emailError");
+  const email = document.getElementById('email').value.trim();
+
+  if (email === "") {
+    emailError.textContent ="Please enter an email address";
+  } else {
+    emailError.textContent = "";
+  }
+}
+function validateName(){
+  const usernameError = document.getElementById("nameError");
+
+  const username = document.getElementById('name').value.trim();
+    // const usernamePattern=/^(?=.*[A-Z])+(?=.*\d)[A-Za-z/d]{3,}$/;
+    const usernamePattern=/^[A-Z][a-z0-9_A-Z\.]+$/
+    const validUsername=usernamePattern.test(username);
+
+    const hasUpperCase=/[A-Z]/.test(username);
+    const hasNumber=/\d/.test(username);
+    if(!username){
+      usernameError.textContent="Please enter a username";
+    }else if(!hasUpperCase){
+        usernameError.textContent="Username must contain at least one uppercase letter";
+      }
+      else if(!hasNumber){
+        usernameError.textContent="Username must contain at least one number";
+      }
+      else if(username.length<3){
+        usernameError.textContent="Username must be at least 3 characters long";
+      }
+      else if(!validUsername){
+        usernameError.textContent="Please capitalize the First letter of the username";
+      }
+      else {
+        usernameError.textContent = "";
+        }
+  }
+document.getElementById("edit-user").addEventListener("submit", async function(event) {
+  event.preventDefault();
+  validateEmail();
+  validateName(); 
+
+  // Check if there are any validation errors before submitting the form
+  const emailError = document.getElementById("emailError").textContent;
+  const nameError = document.getElementById("nameError").textContent;
+  if (emailError === "" && nameError === "") {
+    this.submit();
+  }
+}); 
+</script>
+  </section>
+</body>

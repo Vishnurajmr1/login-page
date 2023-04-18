@@ -1,0 +1,54 @@
+
+{{>admin-header}}
+<style>
+    .btn:hover{
+        color: white !important;
+    }
+  table,td,th{
+  text-align:center;
+}
+</style>
+
+<h1 class="text-center m-3 fw-bold">All Users</h1>
+<div class="container">
+<table class="table table-bordered align-middle mb-0 bg-white mx-4">
+  <thead class="bg-light">
+    <tr>
+      <th>Id</th>
+      <th >Name</th>
+      <th >Email</th>
+      <th >Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each usersData}}
+    <tr>
+      <td>
+          <div class="ms-3">
+            <p class="fw-bold mb-1">{{this._id}}</p>
+          </div>
+      </td>
+      <td>
+        <div class="d-flex align-items-center">
+          <div class="ms-3">
+            <p class="fw-bold mb-1">{{this.name}}</p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-bold mb-1 text-dark">{{this.email}}</p>
+      </td>
+       <td>
+        <a href="/admin/edit-user/{{this._id}}" class="btn btn-outline-primary btn-md btn-rounded fw-bold text-dark">Edit</a>
+        <a href="/admin/delete-user/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you sure want to delete {{this.name}}')">Delete</a>
+        {{!-- <a href="/admin/delete-user" class="btn btn-outline-danger btn-md btn-rounded fw-bold text-dark">Delete</a> --}}
+
+       
+      </td>
+     
+    </tr>
+    {{/each}}
+  
+  </tbody>
+</table>
+</div>

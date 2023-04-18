@@ -1,0 +1,71 @@
+<body>
+  <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+  <div id="preloader" class="preloader">
+    <div class="inner">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </div>
+  <section class="fxt-template-animation fxt-template-layout26">
+    <!-- Animation Start Here -->
+    <div class="starfield"></div>
+    <!-- Animation End Here -->
+    <div class="fxt-content">
+      <div class="fxt-header">
+        <a href="/admin" class="fxt-logo"><img
+            src="\images\img\adminlogin.png"
+            alt="Logo"
+            style="width: 10rem;height:10rem"
+          /></a>
+      </div>
+      <div class="fxt-form">
+        {{#if message}}
+          <h3 style="color:crimson;">{{message}}</h3>
+        {{/if}}
+        <div class="fxt-transformY-50 fxt-transition-delay-1">
+          <p>Admin Login</p>
+        </div>
+        <form method="POST" action="" id="loginForm">
+          <div class="form-group">
+            <div class="fxt-transformY-50 fxt-transition-delay-2">
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                name="email"
+                placeholder="Email"
+              />
+              <div id="emailError" class="errorMsg"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="fxt-transformY-50 fxt-transition-delay-3">
+          <label for="">Password</label>
+              <input
+                id="password"
+                type="password"
+                class="form-control"
+                name="password"
+                placeholder="Password"
+              />
+              <i
+                toggle="#password"
+                class="fa fa-fw fa-eye toggle-password field-icon"
+              ></i>
+            </div>
+    			 <div id="passwordError" class="errorMsg"></div>
+          </div>
+          <div class="form-group">
+            <div class="fxt-transformY-50 fxt-transition-delay-5">
+              <button type="submit" class="fxt-btn-fill">Log in</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <script src="\javascripts\js\validation\loginvalidation.js"></script>
+</body>

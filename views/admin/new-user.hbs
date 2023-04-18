@@ -1,0 +1,125 @@
+<style>
+    input:-webkit-autofill { 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: black !important;
+}
+</style>
+
+<h1 class="m-4 text-center text-uppercase">New user form</h1>
+<section>
+    <div class="container text-left text-dark">
+        <div class="row ">
+            <div class="col-md-6 ">
+                <h2 class="text-center text-uppercase">Add User</h2>
+                 {{#if message}}
+                {{#if success}}
+                    <p class="success-message" >{{message}}</p>
+                    {{else}}
+                    <p class="error-message" >{{message}}</p>
+                    {{/if}}
+                {{/if}}
+                <form action="/admin/new-user" method="POST" id="new-user">
+                    <label for="">Name</label>
+                    <input type="text" name="name" id="name" class="form-control" oninput="validateName" >
+                     <div id="nameError" class="errorMsg" style="color:crimson;"></div>
+
+                     <label for="">Email</label>
+                    <input type="email" name="email" id="email" class="form-control"  oninput="validateEmail" >
+                     <div id="emailError" class="errorMsg" style="color: crimson;"></div>
+                     <label for="password">Password</label>
+                    <div class="fxt-transformY-50 fxt-transition-delay-2">
+                    <div style="position: relative;">
+                        <input type="password" name="password" id="password" class="form-control" oninput="validatePassword">
+                        <i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
+                    </div>
+                    </div>
+                     <div id="passwordError" class="errorMsg" style="color: crimson;"></div>
+                    <button type="submit" class="btn btn-success mt-4">Add User</button>
+                    <a href="/admin/users" class="btn btn-outline-warning mt-4 " style="float: right;">Go Back</a>
+                </form>
+               
+            </div>
+        </div>
+    </div>
+<script>
+document.getElementById("email").addEventListener('input', validateEmail);
+document.getElementById("name").addEventListener('input', validateName);
+document.getElementById("password").addEventListener('input', validatePassword);
+
+
+
+function validateEmail() {
+  const emailError = document.getElementById("emailError");
+  const email = document.getElementById('email').value.trim();
+
+  if (email === "") {
+    emailError.textContent ="Please enter an email address";
+  } else {
+    emailError.textContent = "";
+  }
+}
+function validateName(){
+  const usernameError = document.getElementById("nameError");
+
+  const username = document.getElementById('name').value.trim();
+    // const usernamePattern=/^(?=.*[A-Z])+(?=.*\d)[A-Za-z/d]{3,}$/;
+    const usernamePattern=/^[A-Z][a-z0-9_A-Z\.]+$/
+    const validUsername=usernamePattern.test(username);
+
+    const hasUpperCase=/[A-Z]/.test(username);
+    const hasNumber=/\d/.test(username);
+    if(!username){
+      usernameError.textContent="Please enter a username";
+    }else if(!hasUpperCase){
+        usernameError.textContent="Username must contain at least one uppercase letter";
+      }
+      else if(!hasNumber){
+        usernameError.textContent="Username must contain at least one number";
+      }
+      else if(username.length<3){
+        usernameError.textContent="Username must be at least 3 characters long";
+      }
+      else if(!validUsername){
+        usernameError.textContent="Please capitalize the First letter of the username";
+      }
+      else {
+        usernameError.textContent = "";
+        }
+  }
+  function validatePassword() {
+  const passwordError = document.getElementById("passwordError");
+  const password = document.getElementById('password').value.trim();
+
+  if (password ==="") {
+    passwordError.textContent = "Please enter a password";
+  } else if (password.length < 8) {
+    passwordError.textContent = "Password must be longer than 8 characters";
+  }else if(!/[A-Z]/.test(password)){
+      passwordError.textContent="Password must contain at least one uppercase letter";
+  }else if(!/[a-z]/.test(password)){
+      passwordError.textContent="Password must contain at least one lowercase letter";
+      return false;
+  }else if(!/[0-9]/.test(password)){
+      passwordError.textContent="Password must contain at least one numeric digit";
+  }else if(!/[!@#$%^&*(),.?":{}|<>]/.test(password)){
+      passwordError.textContent="Password must contain at least one special character";
+  }else {
+    passwordError.textContent = "";
+  }
+}
+    document.getElementById("new-user").addEventListener("submit", async function(event) {
+  event.preventDefault();
+  validateEmail();
+  validateName(); 
+  validatePassword();
+
+  // Check if there are any validation errors before submitting the form
+  const emailError = document.getElementById("emailError").textContent;
+  const nameError = document.getElementById("nameError").textContent;
+  const passwordError=document.getElementById('passwordError').textContent;
+  if (emailError === "" && nameError === "" && passwordError==="") {
+    this.submit();
+  }
+}); 
+</script>
+</section>

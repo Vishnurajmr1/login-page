@@ -1,0 +1,144 @@
+{{>admin-header}}
+<style>
+    .btn:hover{
+        color: white !important;
+    }
+</style>
+
+<h1 class="text-center m-3 fw-bold">All Products</h1>
+{{!-- <div class="container">
+<table class="table table-bordered align-middle mb-0 bg-white mx-4">
+  <thead class="bg-light">
+    <tr>
+      <th >Product Name</th>
+      <th >Category</th>
+      <th >Description</th>
+      <th >Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+              src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+              alt=""
+              style="width: 45px; height: 45px"
+              class="rounded-circle"
+              />
+          <div class="ms-3">
+            <p class="fw-bold mb-1">John Doe</p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">Software engineer</p>
+        <p class="text-muted mb-0">IT department</p>
+      </td>
+      <td>
+        <button type="button" class="btn btn-link  btn-sm btn-rounded">
+        </button>
+      </td>
+       <td>
+        <button type="button" class="btn btn-outline-primary btn-md btn-rounded fw-bold text-dark">
+          Edit
+        </button>
+      </td>
+     
+    </tr>
+    <tr>
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+              src="https://mdbootstrap.com/img/new/avatars/6.jpg"
+              class="rounded-circle"
+              alt=""
+              style="width: 45px; height: 45px"
+              />
+          <div class="ms-3">
+            <p class="fw-bold mb-1">Alex Ray</p>
+            <p class="text-muted mb-0">alex.ray@gmail.com</p> 
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">Consultant</p>
+        <p class="text-muted mb-0">Finance</p>
+      </td>
+      <td>
+        <h1 class="badge badge-primary rounded-pill d-inline">Onboarding</h1>
+      </td>
+      <td>
+        <button type="button" class="btn btn-outline-primary btn-md btn-rounded fw-bold text-dark">
+          Edit
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+              src="https://mdbootstrap.com/img/new/avatars/7.jpg"
+              class="rounded-circle"
+              alt=""
+              style="width: 45px; height: 45px"
+              />
+          <div class="ms-3">
+            <p class="fw-bold mb-1">Kate Hunington</p>
+             <p class="text-muted mb-0">kate.hunington@gmail.com</p> 
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">Designer</p>
+        <p class="text-muted mb-0">UI/UX</p>
+      </td>
+      <td>
+        <span class="badge badge-warning rounded-pill d-inline">Awaiting</span>
+      </td>
+       <td>
+        <button
+                type="button"
+                class="btn btn-outline-primary btn-md btn-rounded fw-bold text-dark"
+                data-mdb-ripple-color="dark"
+                >
+          Edit
+        </button>
+         <button
+                type="button"
+                class="btn btn-outline-danger btn-md btn-rounded fw-bold text-dark"
+                data-mdb-ripple-color="dark"
+                >
+          Delete
+        </button>
+      </td>
+     
+    </tr>
+  </tbody>
+</table>
+</div> --}}
+    <section>
+      <div class="container mt-5">
+        <div class="row">
+        {{#each products}}
+          <div class="col-md-3 p-3">
+            <div class="card" style="width:15rem;height:25rem">
+              <img
+                class="card-img-top"
+                src="/product-images/{{this._id}}.jpg"
+                alt="Card image cap" style="width:12rem;height:25rem"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{this.Name}}</h5>
+                <p class="card-text">{{this.Description}}</p>
+                {{!-- <p class="card-text">₹ {{this.Price}}</p> --}}
+
+                <a href="/add-to-cart/{{this._id}}" class="btn btn-primary">Add to cart</a>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+        </div>
+      </div>
+
+    </section>

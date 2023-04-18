@@ -1,0 +1,213 @@
+{{#if admin}}
+{{>admin-header}}
+{{/if}}
+
+<style>
+    .btn:hover{
+        color: white !important;
+    }
+</style>
+
+
+
+
+<h1 class="text-center m-3 fw-bold">All Users</h1>
+<div class="container">
+<table class="table table-bordered align-middle mb-0 bg-white mx-4">
+  <thead class="bg-light">
+    <tr class="text-center">
+      <th >Name</th>
+      <th >Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each usersData}}
+    <tr>
+      <td >
+        <div class="d-flex align-items-center">
+          {{!-- <img
+              src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+              alt=""
+              style="width: 45px; height: 45px"
+              class="rounded-circle"
+              /> --}}
+          <div class="ms-3">
+            <p class="fw-bold mb-1 text-dark">{{this.name}}</p>
+          </div>
+        </div>
+      </td>
+      <td  style="text-align: center;">
+        <p class="fw-bold mb-1 text-dark">{{this.email}}</p>
+        {{!-- <p class="text-muted mb-0">IT department</p> --}}
+      </td> 
+    </tr>
+    {{/each}}
+     {{!-- <tr>
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+              src="https://mdbootstrap.com/img/new/avatars/6.jpg"
+              class="rounded-circle"
+              alt=""
+              style="width: 45px; height: 45px"
+              />
+          <div class="ms-3">
+            <p class="fw-bold mb-1">Alex Ray</p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">Consultant</p>
+        <p class="text-muted mb-0">Finance</p>
+      </td>
+    </tr> --}}
+    {{!-- <tr> 
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+              src="https://mdbootstrap.com/img/new/avatars/7.jpg"
+              class="rounded-circle"
+              alt=""
+              style="width: 45px; height: 45px"
+              />
+          <div class="ms-3">
+            <p class="fw-bold mb-1">Kate Hunington</p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">Designer</p>
+        <p class="text-muted mb-0">UI/UX</p>
+      </td>
+    </tr> --}}
+  </tbody>
+</table>
+</div>
+<br>
+
+
+{{!-- Products Details in home page --}}
+<h1 class="text-center m-3 fw-bold">All Products</h1>
+<div class="container">
+<table class="table table-bordered align-middle mb-0 bg-white mx-4">
+  <thead class="bg-light">
+    <tr>
+      <th>Product Image</th>
+      <th >Product Name</th>
+      <th >Category</th>
+      <th >Description</th>
+      <th >Price</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+              src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+              alt=""
+              style="width: 45px; height: 45px"
+              class="rounded-circle"
+              />
+        </div>
+      </td>
+      <td>
+         <div class="ms-3">
+            <p class="fw-bold mb-1">John Doe</p>
+          </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">Software engineer</p>
+        <p class="text-muted mb-0">IT department</p>
+      </td> 
+      <td>
+        <p class="fw-normal mb-1">Software engineer</p>
+      </td> 
+       <td>
+        <p class="fw-normal mb-1">Software engineer</p>
+      </td> 
+    </tr>
+
+
+
+    {{!-- <tr>
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+              src="https://mdbootstrap.com/img/new/avatars/6.jpg"
+              class="rounded-circle"
+              alt=""
+              style="width: 45px; height: 45px"
+              />
+          <div class="ms-3">
+            <p class="fw-bold mb-1">Alex Ray</p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">Consultant</p>
+        <p class="text-muted mb-0">Finance</p>
+      </td>
+        <td>
+        <p class="fw-normal mb-1">Software engineer</p>
+      </td> 
+       <td>
+        <p class="fw-normal mb-1">Software engineer</p>
+      </td> 
+    </tr>
+    <tr>
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+              src="https://mdbootstrap.com/img/new/avatars/7.jpg"
+              class="rounded-circle"
+              alt=""
+              style="width: 45px; height: 45px"
+              />
+          <div class="ms-3">
+            <p class="fw-bold mb-1">Kate Hunington</p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">Designer</p>
+        <p class="text-muted mb-0">UI/UX</p>
+      </td>
+        <td>
+        <p class="fw-normal mb-1">Software engineer</p>
+      </td> 
+       <td>
+        <p class="fw-normal mb-1">Software engineer</p>
+      </td> 
+    </tr>
+     <tr>
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+              src="https://mdbootstrap.com/img/new/avatars/7.jpg"
+              class="rounded-circle"
+              alt=""
+              style="width: 45px; height: 45px"
+              />
+          <div class="ms-3">
+            <p class="fw-bold mb-1">Kate Hunington</p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">Designer</p>
+        <p class="text-muted mb-0">UI/UX</p>
+      </td>
+        <td>
+        <p class="fw-normal mb-1">Software engineer</p>
+      </td> 
+       <td>
+        <p class="fw-normal mb-1">Software engineer</p>
+      </td> 
+    </tr> --}}
+  </tbody>
+</table>
+</div>
+
+

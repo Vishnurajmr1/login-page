@@ -1,0 +1,44 @@
+ <header>
+     {{!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> --}}
+     <nav class="navbar navbar-expand-lg  navbar-light" style="background-color: #e3f2fd;">
+
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="font-weight: bold;font-style: italic;">Eshop Admin-Panel</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/admin">Home</a>
+        </li>
+        {{#unless product}}
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/products">All Products</a>
+        </li>
+        {{/unless}}
+        {{#unless user}}
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/users">All Users</a>
+        </li>
+        {{/unless}}
+        {{#if user}}
+         <a href="/admin/new-user" class="btn btn-outline-secondary btn-md btn-rounded mx-3 fw-bold text-dark p-2">
+          Add New User
+        </a>
+        {{/if}}
+      </ul>
+        {{#if product}}
+         <a href="/admin/new-product" class="btn btn-outline-secondary btn-md btn-rounded mx-3 fw-bold text-dark p-2">
+          Add New Product
+        </a>
+        {{/if}}
+      <form class="d-flex">
+        <input class="form-control me-2" type="text" placeholder="Search"   name="search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <a href="/admin/logout" class=" btn btn-outline-danger m-3">Log Out</a>
+    </div>
+  </div>
+</nav>
+    </header>

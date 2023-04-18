@@ -1,0 +1,145 @@
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="preloader" class="preloader">
+        <div class='inner'>
+            <div class='line1'></div>
+            <div class='line2'></div>
+            <div class='line3'></div>
+        </div>
+    </div>
+    <section class="fxt-template-animation fxt-template-layout24" data-bg-image="\images\img\figure\bg24-l.jpg">
+        <!-- Video Area Start Here -->
+        <div class="fxt-video-background">
+            <div class="fxt-video">
+                <div id="fxtVideo" data-property="{
+                    videoURL:'F_7ZoAQ3aJM', 
+                    autoPlay:true, 
+                    mute:true, 
+                    loop:true, 
+                    startAt:0, 
+                    opacity:1, 
+                    quality:'default', 
+                    showControls:false, 
+                    optimizeDisplay:true,
+                    containment:'.fxt-video-background'
+                }">
+                </div>
+            </div>
+        </div>
+        <!-- Video Area Start Here -->
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-3">
+                    <div class="fxt-header">
+                        <a href="/" class="fxt-logo"><img src="\images\img\logo-23(1).jpg" alt="Logo"></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="fxt-content">
+                         {{#if message}}
+                         {{#if success}}
+                            <h5 style="color:green;font-weight:bold;">{{message}}</h5>
+                            {{else}}
+                            <h5 style="color:Crimson;font-weight:bold;">{{message}}</h5>
+                            {{/if}}
+                        {{/if}}
+                        <h2>Login into your account</h2>
+                        <div class="fxt-form">
+                            <form method="POST" action="/login" id="loginForm" onsubmit="return validateForm()">
+                                <div class="form-group">
+                                    <div class="fxt-transformY-50 fxt-transition-delay-1">
+                                        <input type="email" id="email" class="form-control" name="email" placeholder="Email" oninput="validateEmail()" >
+                                    </div>
+                                        <div id="emailError" class="errorMsg"></div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="fxt-transformY-50 fxt-transition-delay-2">
+                                        <input id="password" type="password" class="form-control" name="password" placeholder="Password" oninput="validatePassword()" >
+                                        <i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
+                                    </div>
+                                         <div id="passwordError" class="errorMsg"></div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="fxt-transformY-50 fxt-transition-delay-3">
+                                        <div class="fxt-checkbox-area">
+                                            <a href="/password" class="switcher-text">Forgot Password</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="fxt-transformY-50 fxt-transition-delay-4">
+                                        <button type="submit" class="fxt-btn-fill">Log in</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="fxt-footer">
+                            <div class="fxt-transformY-50 fxt-transition-delay-9">
+                                <p>New Here?<a href="/signup" class="switcher-text2 inline-text">Sign Up</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{{!-- <script>
+  // Attach event listeners for email and password fields
+  document.getElementById("email").addEventListener('input', validateEmail);
+  document.getElementById("password").addEventListener('input', validatePassword);
+
+  // Function to validate email
+  function validateEmail() {
+    const emailError = document.getElementById("emailError");
+    const email = document.getElementById('email').value.trim();
+
+    if (email === "") {
+      emailError.textContent = "Please enter an email address";
+    } else {
+      emailError.textContent = "";
+    }
+  }
+
+  // Function to validate password
+  function validatePassword() {
+    const passwordError = document.getElementById("passwordError");
+    const password = document.getElementById('password').value.trim();
+
+    if (password === "") {
+      passwordError.textContent = "Please enter a password";
+    } else if (password.length < 8) {
+      passwordError.textContent = "Password must be longer than 8 characters";
+    }else if(!/[A-Z]/.test(password)){
+        passwordError.textContent="Password must contain at least one uppercase letter";
+    }else if(!/[a-z]/.test(password)){
+        passwordError.textContent="Password must contain at least one lowercase letter";
+        return false;
+    }else if(!/[0-9]/.test(password)){
+        passwordError.textContent="Password must contain at least one numeric digit";
+    }else if(!/[!@#$%^&*(),.?":{}|<>]/.test(password)){
+        passwordError.textContent="Password must contain at least one special character";
+    }else {
+      passwordError.textContent = "";
+    }
+  }
+
+    document.getElementById("loginForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    validateEmail();
+    validatePassword(); 
+
+    // Check if there are any validation errors before submitting the form
+    const emailError = document.getElementById("emailError").textContent;
+    const passwordError = document.getElementById("passwordError").textContent;
+    if (emailError === "" && passwordError === "") {
+      this.submit();
+    }
+  }); 
+</script> --}}
+<script src="\javascripts\js\validation\loginvalidation.js"></script>
+
+</body>
